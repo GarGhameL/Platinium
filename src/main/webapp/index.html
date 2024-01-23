@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EVA7</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+form {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="submit"] {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+input[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+}
+
+    </style>
+</head>
+<body>
+    <h1>Bienvenido a BancoPremium</h1>
+    <form action="login" method="post">
+        Usuario: <input type="text" name="usuario"><br>
+        Contraseña: <input type="password" name="contrasena"><br>
+        <input type="submit" value="Iniciar sesión">
+    </form>
+</body>
+</html>

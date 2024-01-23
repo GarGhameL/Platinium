@@ -1,0 +1,4 @@
+InicializacionServlet.class
+com\platinum\BD\ConexionBD.class
+com\platinum\ctacorriente\JakartaRestConfiguration.class
+com\platinum\ctacorriente\resources\JakartaEE10Resource.class
