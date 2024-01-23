@@ -1,0 +1,56 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clonar Repositorio') {
+            steps {
+                git 'https://usuario:contraseña@github.com/tu-usuario/tu-repo.git'
+            }
+        }
+
+        stage('Compilar y Empaquetar con Maven') {
+            steps {
+                script {
+                    def mvnHome = tool 'Maven'
+                    def mvnCMD = "${mvnHome}/bin/mvn"
+                    sh "${mvnCMD} clean package"
+                }
+            }
+        }
+
+        stage('Guardar Artefactos') {
+            steps {
+                script {
+                    // Guarda el archivo JAR en el directorio de artefactos
+                    archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+                }
+            }
+        }
+
+        stage('Verificar Artefactos') {
+            steps {
+                script {
+                    // Verifica la existencia del archivo JAR
+                    def artifactPath = findFiles(glob: 'target/*.jar')[0]
+                    if (artifactPath != null) {
+                        echo "El archivo JAR se ha guardado correctamente en: ${artifactPath}"
+                    } else {
+                        error "No se encontró el archivo JAR en el directorio de artefactos."
+                    }
+                }
+            }
+        }
+
+        // Agrega más etapas según sea necesario
+
+    }
+
+    post {
+        success {
+            echo 'Pipeline exitoso. Puedes agregar acciones adicionales aquí.'
+        }
+        failure {
+            echo 'El pipeline ha fallado. Puedes agregar acciones adicionales aquí.'
+        }
+    }
+}
