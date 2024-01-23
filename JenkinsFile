@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clonar Repositorio') {
             steps {
-                git 'https://usuario:contraseña@github.com/tu-usuario/tu-repo.git'
+                git 'https://github.com/GarGhameL/Platinium.git'
             }
         }
 
@@ -21,8 +21,8 @@ pipeline {
         stage('Guardar Artefactos') {
             steps {
                 script {
-                    // Guarda el archivo JAR en el directorio de artefactos
-                    archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+                    // Guarda el archivo war en el directorio de artefactos
+                    archiveArtifacts artifacts: 'target/*.war', fingerprint: true
                 }
             }
         }
